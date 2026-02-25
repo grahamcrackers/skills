@@ -100,6 +100,33 @@ npx skills add grahamcrackers/skills -g
 | [web-performance](skills/web-performance/)               | Core Web Vitals, bundle analysis, lazy loading, images, caching strategies  |
 | [security-patterns](skills/security-patterns/)           | XSS prevention, CSP, CSRF, auth tokens, input validation, secure headers    |
 
+## Contributing
+
+This repo uses [Conventional Commits](https://www.conventionalcommits.org/) enforced by [commitlint](https://commitlint.js.org/) and [husky](https://typicode.github.io/husky/). Every commit message must follow the format:
+
+```
+type(scope): description
+```
+
+The commit type determines the version bump via [semantic-release](https://semantic-release.gitbook.io/):
+
+| Commit Type       | Description                     | Version Bump    | Example                                    |
+| ----------------- | ------------------------------- | --------------- | ------------------------------------------ |
+| `fix`             | Bug fix                         | Patch (`0.0.x`) | `fix: correct zod schema example`          |
+| `feat`            | New feature                     | Minor (`0.x.0`) | `feat: add tanstack-router skill`          |
+| `feat!` / `fix!`  | Breaking change (with `!`)      | Major (`x.0.0`) | `feat!: restructure skill format`          |
+| `BREAKING CHANGE` | Breaking change (in footer)     | Major (`x.0.0`) | Footer: `BREAKING CHANGE: new frontmatter` |
+| `docs`            | Documentation only              | No release      | `docs: update README examples`             |
+| `chore`           | Maintenance / tooling           | No release      | `chore: update dependencies`               |
+| `refactor`        | Code change (no fix or feature) | No release      | `refactor: simplify pattern references`    |
+| `style`           | Formatting, whitespace          | No release      | `style: fix markdown table alignment`      |
+| `test`            | Adding or updating tests        | No release      | `test: add commitlint validation`          |
+| `ci`              | CI/CD changes                   | No release      | `ci: add format check to workflow`         |
+| `perf`            | Performance improvement         | Patch (`0.0.x`) | `perf: optimize skill loading`             |
+
+> [!TIP]
+> Only `fix`, `feat`, and `perf` trigger a release. Use `!` or a `BREAKING CHANGE` footer for major bumps.
+
 ## Compatibility
 
 These skills work with any agent that supports the [Agent Skills specification](https://agentskills.io), including Cursor, Claude Code, Codex, Windsurf, Cline, GitHub Copilot, and many more.
