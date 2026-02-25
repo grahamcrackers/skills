@@ -1,0 +1,30 @@
+{
+    "name": "@grahamcrackers/skills",
+    "description": "Agent skills for modern web development",
+    "version": "0.0.1",
+    "author": "grahamcrackers",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "release": "semantic-release"
+    },
+    "keywords": [],
+    "packageManager": "pnpm@10.17.1",
+    "devDependencies": {
+        "@semantic-release/changelog": "^6.0.3",
+        "@semantic-release/commit-analyzer": "^13.0.1",
+        "@semantic-release/git": "^10.0.1",
+        "@semantic-release/github": "^12.0.6",
+        "@semantic-release/release-notes-generator": "^14.1.0",
+        "eslint": "^10.0.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.5",
+        "prettier": "^3.8.1",
+        "semantic-release": "^25.0.3"
+    }
+}

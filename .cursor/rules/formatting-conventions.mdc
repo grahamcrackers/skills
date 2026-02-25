@@ -1,0 +1,113 @@
+---
+description: Formatting preferences for Prettier, EditorConfig, and Tailwind CSS tooling
+alwaysApply: true
+---
+
+# Formatting Conventions
+
+## Auto-Format After Edits
+
+After creating or modifying source files (`.ts`, `.tsx`, `.js`, `.jsx`, `.json`, `.css`, `.md`, `.yml`, `.yaml`), auto-format them to avoid formatting errors piling up.
+
+**Pick the right tool based on the project setup:**
+
+1. **ESLint with Prettier plugin** (preferred) — if the project uses `eslint-plugin-prettier` or `eslint-config-prettier`, run ESLint which handles both linting and formatting in one pass:
+
+```shell
+npx eslint --fix <file-path>
+```
+
+2. **Prettier standalone** — if Prettier is installed but not integrated with ESLint, run it directly:
+
+```shell
+npx prettier --write <file-path>
+```
+
+For multiple files, pass them all in one call:
+
+```shell
+npx eslint --fix file1.ts file2.tsx
+# or
+npx prettier --write file1.ts file2.tsx file3.json
+```
+
+Skip if neither Prettier nor ESLint is installed in the project.
+
+## Prettier
+
+Use this config when creating or modifying `.prettierrc.js` / `.prettierrc.cjs` / `prettier.config.js`:
+
+```javascript
+/** @type {import("prettier").Config} */
+module.exports = {
+    semi: true,
+    trailingComma: "all",
+    singleQuote: false,
+    printWidth: 120,
+    tabWidth: 4,
+    overrides: [
+        {
+            files: "*.{yml,yaml}",
+            options: {
+                tabWidth: 2,
+            },
+        },
+    ],
+};
+```
+
+When the project uses Tailwind CSS, add `prettier-plugin-tailwindcss` for automatic class sorting:
+
+```javascript
+/** @type {import("prettier").Config} */
+module.exports = {
+    semi: true,
+    trailingComma: "all",
+    singleQuote: false,
+    printWidth: 120,
+    tabWidth: 4,
+    plugins: ["prettier-plugin-tailwindcss"],
+    overrides: [
+        {
+            files: "*.{yml,yaml}",
+            options: {
+                tabWidth: 2,
+            },
+        },
+    ],
+};
+```
+
+## EditorConfig
+
+Include a `.editorconfig` at the project root:
+
+```ini
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+```
+
+## VS Code Settings
+
+When Tailwind CSS is used, add to `.vscode/settings.json`:
+
+```json
+{
+    "tailwindCSS.classFunctions": ["clsx", "cva", "cn"]
+}
+```
+
+This enables Tailwind autocomplete inside `clsx()`, `cva()`, and `cn()` calls.
