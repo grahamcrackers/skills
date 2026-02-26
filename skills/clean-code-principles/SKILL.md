@@ -554,3 +554,4 @@ Patterns born from React's component model that don't exist in the GoF catalog. 
 
 - [Refactoring Guru — Design Patterns](https://refactoring.guru/design-patterns) — full catalog with TypeScript examples
 - [Refactoring Guru — Code Smells](https://refactoring.guru/refactoring/smells) — catalog of code smells and refactoring techniques
+- [The Twelve-Factor App](https://12factor.net/) — methodology for building modern, scalable, maintainable software-as-a-service apps ([reference](references/twelve-factor-app.md))
